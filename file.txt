@@ -1,0 +1,75 @@
+Program : **Factorial Program in Python**
+================================
+
+The following Python program calculates the factorial of a given number.
+
+### Code
+
+```python
+def factorial(n):
+    """
+    Calculate the factorial of a number.
+
+    Args:
+        n (int): The number to calculate the factorial of.
+
+    Returns:
+        int: The factorial of n.
+
+    Raises:
+        ValueError: If n is a negative number.
+    """
+    if n < 0:
+        raise ValueError("Factorial is not defined for negative numbers.")
+    elif n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+# Example usage:
+if __name__ == "__main__":
+    num = int(input("Enter a number: "))
+    try:
+        print(f"The factorial of {num} is: {factorial(num)}")
+    except ValueError as e:
+        print(e)
+```
+
+### Explanation
+
+*   The `factorial` function takes an integer `n` as input and returns its factorial.
+*   It first checks if `n` is negative, in which case it raises a `ValueError` because factorial is not defined for negative numbers.
+*   If `n` is 0 or 1, it returns 1 because the factorial of 0 and 1 is 1.
+*   For other positive numbers, it calculates the factorial using a `for` loop.
+*   The example usage demonstrates how to call the `factorial` function with user input and handle any errors that may occur.
+
+### Alternative Recursive Implementation
+
+If you prefer a recursive implementation, here's an equivalent version:
+
+```python
+def factorial_recursive(n):
+    """
+    Calculate the factorial of a number using recursion.
+
+    Args:
+        n (int): The number to calculate the factorial of.
+
+    Returns:
+        int: The factorial of n.
+
+    Raises:
+        ValueError: If n is a negative number.
+    """
+    if n < 0:
+        raise ValueError("Factorial is not defined for negative numbers.")
+    elif n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial_recursive(n - 1)
+```
+
+Note that while recursive implementations can be elegant, they may cause a stack overflow for large inputs due to the recursive function calls. The iterative implementation is generally safer and more efficient for large inputs.
